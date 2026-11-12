@@ -194,7 +194,7 @@ export default function DesktopMockup() {
           <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded bg-white border border-slate-200">
             <span className="font-semibold text-slate-800">TAI Desktop Client</span>
             <span className="text-slate-300">|</span>
-            <span className="text-blue-600 font-mono text-[11px] truncate max-w-[220px]">
+            <span className="text-blue-600 font-mono text-[11px] truncate max-w-55">
               ▶ {currentChannel.videoTitle}
             </span>
           </div>
@@ -298,11 +298,11 @@ export default function DesktopMockup() {
       </div>
 
       {/* Main Split Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-115">
         {/* Left Column: YouTube Video Player Screen */}
         <div className="lg:col-span-7 bg-slate-950 p-3 sm:p-4 flex flex-col justify-between relative border-b lg:border-b-0 lg:border-r border-slate-200 overflow-hidden">
           <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col justify-between group shadow-inner">
-            <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center p-6">
+            <div className="absolute inset-0 bg-linear-to-tr from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center p-6">
               <div className="w-full h-full flex flex-col justify-center items-center text-center opacity-90">
                 <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center mb-3 shadow-md">
                   <Cpu className="w-7 h-7 text-blue-400 animate-pulse" />
@@ -325,12 +325,12 @@ export default function DesktopMockup() {
             </div>
 
             {/* YouTube top badges */}
-            <div className="relative z-10 flex items-center justify-between p-3 bg-gradient-to-b from-black/80 to-transparent">
+            <div className="relative z-10 flex items-center justify-between p-3 bg-linear-to-b from-black/80 to-transparent">
               <div className="flex items-center gap-2">
                 <div className="px-2 py-0.5 rounded bg-red-600 text-white font-black text-[10px] tracking-wide">
                   YouTube
                 </div>
-                <span className="text-xs font-medium text-white truncate max-w-[200px] sm:max-w-xs drop-shadow">
+                <span className="text-xs font-medium text-white truncate max-w-50 sm:max-w-xs drop-shadow">
                   {currentChannel.videoTitle}
                 </span>
               </div>
@@ -404,9 +404,9 @@ export default function DesktopMockup() {
             </div>
 
             {/* Video Controls Bar */}
-            <div className="relative z-10 p-2.5 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col gap-1.5">
+            <div className="relative z-10 p-2.5 bg-linear-to-t from-black via-black/80 to-transparent flex flex-col gap-1.5">
               <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden cursor-pointer">
-                <div className="bg-gradient-to-r from-red-600 via-blue-500 to-indigo-500 h-full w-[35%]" />
+                <div className="bg-linear-to-r from-red-600 via-blue-500 to-indigo-500 h-full w-[35%]" />
               </div>
 
               <div className="flex items-center justify-between text-xs text-slate-300 pt-1">
@@ -478,7 +478,7 @@ export default function DesktopMockup() {
               />
             </div>
 
-            <div className="space-y-2.5 max-h-[310px] overflow-y-auto pr-1">
+            <div className="space-y-2.5 max-h-77.5 overflow-y-auto pr-1">
               {currentChannel.subtitles.map((sub, idx) => {
                 const isActive = idx === activeSubtitleIndex;
                 return (
