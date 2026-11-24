@@ -2,6 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import {
+  getSiteUrl,
+  SITE_DESCRIPTION,
+  SITE_FULL_NAME,
+  SITE_NAME,
+  SITE_TITLE,
+} from "@/lib/site";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -20,44 +27,42 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://translationai.app";
+const siteUrl = getSiteUrl();
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#2563EB",
+  themeColor: "#0a1026",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Translation AI (TAI) - Real-time YouTube Subtitles & Audio Dubbing Desktop App",
-    template: "%s | TAI Desktop",
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Ứng dụng Desktop dịch thuật YouTube song ngữ theo thời gian thực với độ trễ cực thấp (<200ms), bảo toàn 100% thuật ngữ chuyên ngành IT/Y khoa và thuyết minh AI giọng đọc tự nhiên.",
-  applicationName: "TAI Desktop",
-  authors: [{ name: "TAI Development Team", url: siteUrl }],
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: "TAI Development Team", url: `${siteUrl}/` }],
   generator: "Next.js",
   keywords: [
-    "Translation AI",
     "TAI Desktop",
-    "Real-time YouTube Subtitles",
-    "Dịch thuật YouTube song ngữ",
-    "Audio Dubbing AI",
-    "Terminology Lock",
-    "Phụ đề song ngữ YouTube",
-    "Dịch video YouTube thời gian thực",
-    "Whisper AI Desktop",
-    "Lồng tiếng AI YouTube",
-    "Phụ đề nổi video",
-    "YouTube bilingual subtitles",
+    "Translation AI",
+    "dịch phụ đề YouTube thời gian thực",
+    "phụ đề song ngữ YouTube",
+    "thuyết minh AI YouTube",
+    "lồng tiếng AI YouTube",
+    "real-time YouTube subtitles",
+    "AI audio dubbing desktop app",
+    "Whisper v3 Turbo",
+    "AI Terminology Lock",
+    "phụ đề nổi video",
+    "dịch video tiếng Anh sang tiếng Việt",
     "TAI Windows",
-    "TAI macOS",
   ],
   creator: "TAI Team",
-  publisher: "Translation AI Inc.",
+  publisher: SITE_FULL_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -67,33 +72,30 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       "vi-VN": "/",
-      "en-US": "/en",
+      "x-default": "/",
     },
   },
   openGraph: {
-    title: "Translation AI (TAI) - Real-time YouTube Subtitles & Audio Dubbing",
-    description:
-      "Ứng dụng Desktop dịch thuật YouTube song ngữ theo thời gian thực với độ trễ cực thấp (<200ms), bảo toàn 100% thuật ngữ chuyên ngành IT/Y khoa.",
-    url: siteUrl,
-    siteName: "Translation AI (TAI)",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: `${siteUrl}/`,
+    siteName: SITE_NAME,
     locale: "vi_VN",
     type: "website",
     images: [
       {
-        url: "/og-preview.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Translation AI (TAI) Desktop App Preview",
+        alt: "TAI Desktop — Dịch phụ đề song ngữ & thuyết minh AI YouTube thời gian thực",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Translation AI (TAI) - Real-time YouTube Subtitles Desktop App",
-    description:
-      "Dịch thuật YouTube song ngữ thời gian thực với độ trễ <200ms & AI Terminology Lock cho IT & Y khoa.",
-    images: ["/og-preview.png"],
-    creator: "@translationai",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -108,7 +110,13 @@ export const metadata: Metadata = {
   },
   category: "technology",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 

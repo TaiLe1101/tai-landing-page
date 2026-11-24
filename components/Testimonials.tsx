@@ -107,7 +107,7 @@ export default function Testimonials() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h4 className="text-xs font-bold text-slate-900">{item.name}</h4>
+                      <h3 className="text-xs font-bold text-slate-900">{item.name}</h3>
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
                     </div>
                     <p className="text-[11px] text-slate-500 font-medium">

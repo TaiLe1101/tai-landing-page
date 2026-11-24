@@ -1,0 +1,114 @@
+name: Deploy TAI Landing Page
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-tai-landing-page
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Ubuntu Server
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Validate deployment secrets
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SSH_HOST:-}" ]; then
+            echo "::error::Missing required secret: SSH_HOST"
+            exit 1
+          fi
+          if [ -z "${SSH_PRIVATE_KEY:-}" ]; then
+            echo "::error::Missing required secret: SSH_PRIVATE_KEY"
+            exit 1
+          fi
+
+      - name: Deploy via SSH and restart PM2
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER || 'root' }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          APP_DIR: ${{ secrets.APP_DIR || '/var/www/tai-landing-page' }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+
+          KEY_FILE="$HOME/.ssh/deploy_key"
+          trap 'rm -f "$KEY_FILE"' EXIT
+
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$KEY_FILE"
+          chmod 600 "$KEY_FILE"
+
+          ESCAPED_APP_DIR=$(printf '%q' "$APP_DIR")
+
+          ssh \
+            -i "$KEY_FILE" \
+            -p "$SSH_PORT" \
+            -o StrictHostKeyChecking=accept-new \
+            -o BatchMode=yes \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=6 \
+            -o ConnectTimeout=15 \
+            "${SSH_USER}@${SSH_HOST}" \
+            "if [ \"\$(id -u)\" -ne 0 ]; then exec sudo -H env APP_DIR=${ESCAPED_APP_DIR} bash -s; else exec env APP_DIR=${ESCAPED_APP_DIR} bash -s; fi" <<'EOF'
+          set -euo pipefail
+
+          export HOME="/root"
+          export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH:-}"
+          export NVM_DIR="/root/.nvm"
+          if [ -s "$NVM_DIR/nvm.sh" ]; then
+            . "$NVM_DIR/nvm.sh"
+          fi
+
+          echo "==> Deploying tai-landing-page in ${APP_DIR}"
+          echo "==> Running as: $(whoami) (uid=$(id -u))"
+          echo "==> Node: $(node -v) | npm: $(npm -v) | pm2: $(pm2 -v)"
+
+          if [ ! -d "${APP_DIR}/.git" ]; then
+            echo "ERROR: Git repository not found at ${APP_DIR}" >&2
+            exit 1
+          fi
+
+          cd "$APP_DIR"
+
+          echo "==> Pulling latest origin/main (preserving untracked .env files)..."
+          git fetch origin main
+          git reset --hard origin/main
+          git log -1 --oneline
+
+          echo "==> Installing dependencies..."
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+          echo "==> Building Next.js production bundle..."
+          npm run build
+
+          echo "==> Restarting PM2 process: tai-landing-page"
+          if pm2 describe tai-landing-page >/dev/null 2>&1; then
+            pm2 restart tai-landing-page --update-env
+          else
+            pm2 start npm --name tai-landing-page -- run start
+          fi
+
+          pm2 save
+          pm2 describe tai-landing-page
+          echo "==> Deploy completed successfully."
+          EOF

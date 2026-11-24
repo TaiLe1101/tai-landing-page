@@ -1,22 +1,34 @@
 import type { MetadataRoute } from "next";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Translation AI (TAI) - Real-time YouTube Subtitles & Audio Dubbing",
-    short_name: "TAI Desktop",
-    description:
-      "Ứng dụng Desktop dịch thuật YouTube song ngữ theo thời gian thực với độ trễ cực thấp (<200ms), AI Terminology Lock và Audio Dubbing thông minh.",
+    name: `${SITE_NAME} — Real-time YouTube Subtitles & AI Audio Dubbing`,
+    short_name: SITE_NAME,
+    description: SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
-    background_color: "#F8FAFC",
-    theme_color: "#2563EB",
+    background_color: "#0a1026",
+    theme_color: "#0a1026",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "any",
-        type: "image/x-icon",
+        src: "/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/logo.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   };
 }
-

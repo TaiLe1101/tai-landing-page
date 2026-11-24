@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Download, Menu, X } from "lucide-react";
 import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
@@ -38,13 +39,15 @@ export default function Navbar({ release }: NavbarProps) {
             className="flex items-center gap-3 group cursor-pointer"
             aria-label="Trang chủ TAI - Translation AI"
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-md shadow-blue-500/20 group-hover:shadow-blue-500/30 transition-all duration-200 text-white">
-              <span className="font-mono font-black text-white text-lg tracking-wider">
-                T
-              </span>
-              <span className="font-mono font-bold text-blue-200 text-xs -ml-0.5">
-                AI
-              </span>
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden bg-[#0a1026] shadow-md shadow-blue-900/20 ring-1 ring-slate-900/10 group-hover:shadow-blue-500/30 transition-all duration-200">
+              <Image
+                src="/logo.png"
+                alt="TAI Desktop Logo"
+                width={40}
+                height={40}
+                priority
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">

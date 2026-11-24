@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { MessageSquare } from "lucide-react";
 import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
@@ -16,10 +17,14 @@ export default function Footer({ release }: FooterProps) {
           {/* Brand Info */}
           <div className="col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 shadow-xs">
-                <span className="font-mono font-bold text-white text-xs">
-                  TAI
-                </span>
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg overflow-hidden bg-[#0a1026] shadow-xs ring-1 ring-slate-900/10">
+                <Image
+                  src="/logo.png"
+                  alt="TAI Desktop Logo"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-base font-bold text-slate-900 tracking-tight">
                 Translation AI (TAI)
@@ -70,9 +75,9 @@ export default function Footer({ release }: FooterProps) {
 
           {/* Column 1: Sản phẩm */}
           <div className="space-y-3">
-            <h5 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
+            <h2 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
               Sản phẩm
-            </h5>
+            </h2>
             <ul className="space-y-2">
               <li>
                 <a
@@ -112,9 +117,9 @@ export default function Footer({ release }: FooterProps) {
 
           {/* Column 2: Tài nguyên */}
           <div className="space-y-3">
-            <h5 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
+            <h2 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
               Tài nguyên
-            </h5>
+            </h2>
             <ul className="space-y-2">
               <li>
                 <a
@@ -153,9 +158,9 @@ export default function Footer({ release }: FooterProps) {
 
           {/* Column 3: Pháp lý & An toàn */}
           <div className="space-y-3">
-            <h5 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
+            <h2 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
               Pháp lý & Bảo mật
-            </h5>
+            </h2>
             <ul className="space-y-2">
               <li>
                 <a

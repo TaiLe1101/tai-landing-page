@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://translationai.app";
+  const siteUrl = getSiteUrl();
 
   return {
     rules: [
@@ -10,12 +11,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    host: siteUrl,
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }
-

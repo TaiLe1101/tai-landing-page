@@ -1,45 +1,25 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site";
+import { getCachedLatestRelease } from "@/lib/release-server";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://translationai.app";
+const FALLBACK_LAST_MODIFIED = new Date("2026-11-24T00:00:00.000Z");
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const siteUrl = getSiteUrl();
+  const release = await getCachedLatestRelease();
+  const parsedReleaseDate = release.releaseDate ? new Date(release.releaseDate) : null;
+  const lastModified =
+    parsedReleaseDate && !Number.isNaN(parsedReleaseDate.getTime())
+      ? parsedReleaseDate
+      : FALLBACK_LAST_MODIFIED;
 
   return [
     {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
+      url: `${siteUrl}/`,
+      lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/#features`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#demo`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#pricing`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#download`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/#faq`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      images: [`${siteUrl}/og-image.png`, `${siteUrl}/logo.png`],
     },
   ];
 }
-

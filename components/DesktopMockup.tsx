@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   Play,
   Pause,
@@ -10,17 +11,12 @@ import {
   Settings,
   Languages,
   Shield,
-  Zap,
-  Sparkles,
   Search,
   Copy,
   Check,
   Bookmark,
-  Share2,
   Cpu,
   Radio,
-  Sliders,
-  Globe,
 } from "lucide-react";
 
 interface ChannelData {
@@ -192,6 +188,13 @@ export default function DesktopMockup() {
           </div>
 
           <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded bg-white border border-slate-200">
+            <Image
+              src="/logo.png"
+              alt="TAI Desktop Logo"
+              width={18}
+              height={18}
+              className="w-[18px] h-[18px] rounded-[4px] object-cover shrink-0"
+            />
             <span className="font-semibold text-slate-800">TAI Desktop Client</span>
             <span className="text-slate-300">|</span>
             <span className="text-blue-600 font-mono text-[11px] truncate max-w-55">
@@ -458,9 +461,9 @@ export default function DesktopMockup() {
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-900">
                   Bảng Phụ Đề Song Ngữ Real-Time
-                </h4>
+                </p>
               </div>
               <span className="text-[11px] text-blue-700 font-mono font-bold bg-blue-50 px-2 py-0.5 rounded">
                 {currentChannel.langLabel}

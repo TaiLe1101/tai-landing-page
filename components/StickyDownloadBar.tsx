@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Download, X } from "lucide-react";
 import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
@@ -39,8 +40,14 @@ export default function StickyDownloadBar({ release }: StickyDownloadBarProps) {
     <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-300">
       <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-slate-300/40 rounded-2xl p-3 sm:px-5 sm:py-3.5 flex items-center justify-between gap-3 text-slate-800">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold text-xs shadow-xs">
-            TAI
+          <div className="flex items-center justify-center w-9 h-9 rounded-lg overflow-hidden bg-[#0a1026] shadow-xs ring-1 ring-slate-900/10 shrink-0">
+            <Image
+              src="/logo.png"
+              alt="TAI Desktop Logo"
+              width={36}
+              height={36}
+              className="w-full h-full object-cover"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">

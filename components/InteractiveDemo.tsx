@@ -178,9 +178,9 @@ export default function InteractiveDemo() {
               <span className="text-[10px] font-mono text-blue-600 uppercase tracking-wider font-bold">
                 Nguồn phát: {selectedScenario.category}
               </span>
-              <h4 className="text-sm font-bold text-slate-900 mt-0.5">
+              <h3 className="text-sm font-bold text-slate-900 mt-0.5">
                 {selectedScenario.title}
-              </h4>
+              </h3>
             </div>
 
             <div className="flex items-center gap-3">
