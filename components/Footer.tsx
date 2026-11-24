@@ -1,9 +1,14 @@
 "use client";
 
 import React from "react";
-import { Download, Sparkles, MessageSquare, Globe, ArrowUpRight } from "lucide-react";
+import { MessageSquare } from "lucide-react";
+import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
-export default function Footer() {
+interface FooterProps {
+  release: ReleaseInfo;
+}
+
+export default function Footer({ release }: FooterProps) {
   return (
     <footer className="bg-slate-100 border-t border-slate-200 text-slate-600 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -95,10 +100,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#download"
+                  href={INTERNAL_DOWNLOAD_PATH}
+                  title={`Tải ${release.filename} cho Windows`}
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Tải Desktop Client
+                  Tải Desktop Client{release.version ? ` (v${release.version})` : ""}
                 </a>
               </li>
             </ul>

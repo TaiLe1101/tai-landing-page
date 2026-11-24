@@ -1,13 +1,20 @@
 import React from "react";
+import { getCachedLatestRelease } from "@/lib/release-server";
 
-export default function StructuredData() {
+export default async function StructuredData() {
+  const release = await getCachedLatestRelease();
+
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Translation AI (TAI)",
-    operatingSystem: "Windows 10, Windows 11, macOS, Linux",
+    operatingSystem: "Windows 10, Windows 11",
     applicationCategory: "MultimediaApplication",
     applicationSubCategory: "Real-time YouTube Subtitles & Audio Dubbing",
+    downloadUrl: release.downloadUrl,
+    ...(release.version ? { softwareVersion: release.version } : {}),
+    ...(release.fileSizeLabel ? { fileSize: release.fileSizeLabel } : {}),
+    ...(release.releaseDate ? { dateModified: release.releaseDate } : {}),
     offers: [
       {
         "@type": "Offer",

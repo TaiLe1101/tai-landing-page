@@ -1,11 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Download, Laptop, Apple, X, Zap } from "lucide-react";
+import { Download, X } from "lucide-react";
+import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
-export default function StickyDownloadBar() {
+interface StickyDownloadBarProps {
+  release: ReleaseInfo;
+}
+
+export default function StickyDownloadBar({ release }: StickyDownloadBarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const titleText = release.version ? `TAI Desktop v${release.version}` : "TAI Desktop";
+  const subtitleText = `Windows 10/11${release.fileSizeLabel ? ` (${release.fileSizeLabel})` : ""} • macOS & Linux sắp ra mắt`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +45,7 @@ export default function StickyDownloadBar() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-slate-900">
-                TAI Desktop v2.4
+                {titleText}
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -46,18 +53,19 @@ export default function StickyDownloadBar() {
               </span>
             </div>
             <p className="text-[11px] text-slate-500 hidden sm:block">
-              Hỗ trợ Windows 10/11, macOS & Linux
+              {subtitleText}
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <a
-            href="#download"
+            href={INTERNAL_DOWNLOAD_PATH}
+            title={`Tải ${release.filename} cho Windows`}
             className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all duration-150 cursor-pointer flex items-center gap-1.5 active:scale-[0.98] whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Tải bản Desktop</span>
+            <span>Tải cho Windows</span>
           </a>
 
           <button

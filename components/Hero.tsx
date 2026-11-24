@@ -9,8 +9,23 @@ import {
   Laptop,
 } from "lucide-react";
 import DesktopMockup from "./DesktopMockup";
+import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
-export default function Hero() {
+interface HeroProps {
+  release: ReleaseInfo;
+}
+
+export default function Hero({ release }: HeroProps) {
+  const releaseBadgeText = release.version
+    ? `TAI Desktop v${release.version} Ra Mắt`
+    : "TAI Desktop Mới Nhất";
+  const windowsMeta = [
+    release.version ? `v${release.version}` : "",
+    release.fileSizeLabel,
+  ]
+    .filter(Boolean)
+    .join(" • ");
+
   return (
     <section className="relative pt-32 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-blue-50/50 via-slate-50 to-slate-50">
       {/* Background radial gradients */}
@@ -29,20 +44,23 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Announcement Pill */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-200/80 shadow-xs">
+          <a
+            href="#download"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-200/80 shadow-xs hover:border-blue-300 transition-colors"
+          >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
             </span>
             <span className="text-xs font-semibold text-slate-800">
-              TAI Desktop v2.4 Ra Mắt
+              {releaseBadgeText}
             </span>
             <span className="text-slate-300">•</span>
             <span className="text-xs text-blue-600 font-semibold">
               Whisper v3 Turbo + Neural Dubbing
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-slate-400 ml-0.5" />
-          </div>
+          </a>
         </div>
 
         {/* Main Headline */}
@@ -64,24 +82,33 @@ export default function Hero() {
           {/* Primary CTA */}
           <div className="pt-2 flex items-center justify-center">
             <a
-              href="#download"
+              href={INTERNAL_DOWNLOAD_PATH}
+              title={`Tải ${release.filename} cho Windows`}
               className="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-xl font-bold text-base text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all duration-200 active:scale-[0.98] cursor-pointer group"
             >
               <Download className="w-5 h-5 text-white group-hover:translate-y-0.5 transition-transform duration-150" />
-              <span>Tải bản Desktop miễn phí</span>
+              <span>Tải cho Windows miễn phí</span>
             </a>
           </div>
 
           {/* OS support & Trust Badges */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-500 font-medium">
-            <div className="flex items-center gap-1.5">
+            <a
+              href={INTERNAL_DOWNLOAD_PATH}
+              className="flex items-center gap-1.5 hover:text-blue-600 transition-colors"
+            >
               <Laptop className="w-3.5 h-3.5 text-slate-600" />
-              <span>Tải cho Windows</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Apple className="w-3.5 h-3.5 text-slate-600" />
-              <span>Tải cho macOS</span>
-            </div>
+              <span>
+                Windows 10/11{windowsMeta ? ` (${windowsMeta})` : ""}
+              </span>
+            </a>
+            <a
+              href="#download"
+              className="flex items-center gap-1.5 text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <Apple className="w-3.5 h-3.5 text-slate-400" />
+              <span>macOS (Sắp ra mắt)</span>
+            </a>
             <div className="flex items-center gap-1.5 text-blue-600 font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Không cần Extension trình duyệt</span>

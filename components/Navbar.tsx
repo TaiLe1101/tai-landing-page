@@ -2,10 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import { Download, Menu, X } from "lucide-react";
+import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
-export default function Navbar() {
+interface NavbarProps {
+  release: ReleaseInfo;
+}
+
+export default function Navbar({ release }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const versionBadge = release.version ? `Desktop v${release.version}` : "Desktop";
+  const downloadTitle = `Tải ${release.filename} cho Windows`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +52,7 @@ export default function Navbar() {
                   TAI
                 </span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-blue-50 text-blue-700 border border-blue-200">
-                  Desktop v2.4
+                  {versionBadge}
                 </span>
               </div>
               <span className="text-[11px] text-slate-500 font-medium tracking-wide">
@@ -92,18 +99,20 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="#download"
+              href={INTERNAL_DOWNLOAD_PATH}
+              title={downloadTitle}
               className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/25 transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
               <Download className="w-4 h-4 text-white" />
-              <span>Tải bản Desktop</span>
+              <span>Tải cho Windows</span>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <a
-              href="#download"
+              href={INTERNAL_DOWNLOAD_PATH}
+              title={downloadTitle}
               className="p-2 rounded-lg bg-blue-50 text-blue-600 border border-blue-200 text-xs font-semibold flex items-center gap-1 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
@@ -162,12 +171,13 @@ export default function Navbar() {
             </a>
             <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
               <a
-                href="#download"
+                href={INTERNAL_DOWNLOAD_PATH}
+                title={downloadTitle}
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-2.5 px-4 text-center text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-blue-500/20"
               >
                 <Download className="w-4 h-4" />
-                Tải bản Desktop
+                Tải cho Windows
               </a>
             </div>
           </div>

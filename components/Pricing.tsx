@@ -2,9 +2,15 @@
 
 import React, { useState } from "react";
 import { Check, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { INTERNAL_DOWNLOAD_PATH, type ReleaseInfo } from "@/lib/release";
 
-export default function Pricing() {
+interface PricingProps {
+  release: ReleaseInfo;
+}
+
+export default function Pricing({ release }: PricingProps) {
   const [isYearly, setIsYearly] = useState(true);
+  const downloadTitle = `Tải ${release.filename} cho Windows`;
 
   return (
     <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
@@ -118,7 +124,8 @@ export default function Pricing() {
 
             <div className="mt-8 pt-6 border-t border-slate-100">
               <a
-                href="#download"
+                href={INTERNAL_DOWNLOAD_PATH}
+                title={downloadTitle}
                 className="w-full py-3 px-4 rounded-xl font-bold text-xs text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all duration-200 text-center block cursor-pointer"
               >
                 Tải bản Free Starter
@@ -202,7 +209,8 @@ export default function Pricing() {
 
             <div className="mt-8 pt-6 border-t border-slate-100">
               <a
-                href="#download"
+                href={INTERNAL_DOWNLOAD_PATH}
+                title={downloadTitle}
                 className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 transition-all duration-200 text-center block shadow-lg shadow-blue-500/25 active:scale-[0.98] cursor-pointer"
               >
                 Bắt đầu 7 ngày dùng thử Pro

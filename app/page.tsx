@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -13,8 +11,11 @@ import DownloadSection from "@/components/DownloadSection";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import StickyDownloadBar from "@/components/StickyDownloadBar";
+import { getCachedLatestRelease } from "@/lib/release-server";
 
-export default function Home() {
+export default async function Home() {
+  const release = await getCachedLatestRelease();
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-500/15 selection:text-blue-900">
       {/* Accessible Skip to Content Link (WCAG UX Standard) */}
@@ -26,12 +27,12 @@ export default function Home() {
       </a>
 
       {/* Navigation Bar */}
-      <Navbar />
+      <Navbar release={release} />
 
       {/* Main Content */}
       <main id="main-content" className="flex-1 flex flex-col">
         {/* Hero Section with Live Desktop Mockup */}
-        <Hero />
+        <Hero release={release} />
 
         {/* Social Proof & Metrics Ticker */}
         <SocialProofTicker />
@@ -43,26 +44,26 @@ export default function Home() {
         <InteractiveDemo />
 
         {/* 3-Step Workflow */}
-        <HowItWorks />
+        <HowItWorks release={release} />
 
         {/* Verified User Testimonials */}
         <Testimonials />
 
         {/* Interactive Pricing (Monthly / Yearly Switch) */}
-        <Pricing />
+        <Pricing release={release} />
 
         {/* Direct Download Options */}
-        <DownloadSection />
+        <DownloadSection release={release} />
 
         {/* FAQ Accordion */}
         <FAQ />
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer release={release} />
 
       {/* Sticky Bottom Download Bar on Scroll */}
-      <StickyDownloadBar />
+      <StickyDownloadBar release={release} />
     </div>
   );
 }

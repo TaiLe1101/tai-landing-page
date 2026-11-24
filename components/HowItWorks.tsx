@@ -2,32 +2,37 @@
 
 import React from "react";
 import { DownloadCloud, PlaySquare, Headphones, ShieldCheck } from "lucide-react";
+import type { ReleaseInfo } from "@/lib/release";
 
-const steps = [
-  {
-    step: "01",
-    title: "Cài đặt trong 30 giây",
-    desc: "Tải file cài đặt siêu nhẹ (~78MB) cho Windows hoặc macOS. Không cần cài thêm Extension trình duyệt rườm rà.",
-    icon: DownloadCloud,
-    badge: "1-Click Setup",
-  },
-  {
-    step: "02",
-    title: "Mở bất kỳ video nào",
-    desc: "Mở YouTube, Coursera, Twitch hoặc bất kỳ bài giảng nào. Động cơ audio hook tự động nhận diện luồng phát tức thời.",
-    icon: PlaySquare,
-    badge: "Auto Detection",
-  },
-  {
-    step: "03",
-    title: "Trải nghiệm song ngữ & Dubbing",
-    desc: "Phụ đề song ngữ nổi đè lên màn hình với độ trễ <200ms. Thuyết minh giọng đọc tiếng Việt tự nhiên bảo toàn âm thanh gốc.",
-    icon: Headphones,
-    badge: "Real-time AI",
-  },
-];
+interface HowItWorksProps {
+  release: ReleaseInfo;
+}
 
-export default function HowItWorks() {
+export default function HowItWorks({ release }: HowItWorksProps) {
+  const sizeHint = release.fileSizeLabel ? ` (${release.fileSizeLabel})` : "";
+  const steps = [
+    {
+      step: "01",
+      title: "Cài đặt trong 30 giây",
+      desc: `Tải file cài đặt${sizeHint} cho Windows 10/11 (macOS & Linux sắp ra mắt). Không cần cài thêm Extension trình duyệt rườm rà.`,
+      icon: DownloadCloud,
+      badge: "1-Click Setup",
+    },
+    {
+      step: "02",
+      title: "Mở bất kỳ video nào",
+      desc: "Mở YouTube, Coursera, Twitch hoặc bất kỳ bài giảng nào. Động cơ audio hook tự động nhận diện luồng phát tức thời.",
+      icon: PlaySquare,
+      badge: "Auto Detection",
+    },
+    {
+      step: "03",
+      title: "Trải nghiệm song ngữ & Dubbing",
+      desc: "Phụ đề song ngữ nổi đè lên màn hình với độ trễ <200ms. Thuyết minh giọng đọc tiếng Việt tự nhiên bảo toàn âm thanh gốc.",
+      icon: Headphones,
+      badge: "Real-time AI",
+    },
+  ];
   return (
     <section id="how-it-works" className="py-20 bg-slate-50 relative border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
