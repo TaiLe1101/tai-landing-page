@@ -5,38 +5,38 @@ export interface FAQItem {
 
 export const faqs: FAQItem[] = [
   {
-    question: "TAI hoạt động trên các hệ điều hành nào?",
+    question: "TAI Desktop hoạt động trên những hệ điều hành nào?",
     answer:
-      "TAI Desktop hiện hỗ trợ chính thức Windows 10 & Windows 11 (64-bit) với cơ chế tự động cập nhật phiên bản mới. Phiên bản dành cho macOS (Apple Silicon & Intel) và Linux (AppImage / Flatpak) đang được phát triển và sẽ sớm ra mắt.",
+      "TAI Desktop hiện hỗ trợ chính thức Windows 10 & Windows 11 (64-bit) với cơ chế kiểm tra và cập nhật phiên bản mới tự động ngay trong ứng dụng. Phiên bản dành cho macOS và Linux đang được lên kế hoạch phát triển và sẽ sớm ra mắt.",
   },
   {
-    question: "TAI có làm chậm máy hay gây giật lag khi xem video 4K 60fps không?",
+    question: "Tại sao tôi có thể nghe lồng tiếng ngay mà không cần chờ xử lý hết cả video YouTube?",
     answer:
-      "Tuyệt đối không. Động cơ lõi của TAI được viết bằng ngôn ngữ Rust và C++ kết hợp tăng tốc phần cứng WebGPU. Bộ nhớ RAM tiêu thụ trung bình chỉ từ 120MB đến 180MB, mức chiếm dụng CPU dưới 3%, đảm bảo máy tính của bạn vận hành êm ái, mát mẻ ngay cả khi vừa xem stream 4K vừa chơi game.",
+      "TAI Desktop xử lý dịch thuật và tạo giọng đọc theo từng phân đoạn khoảng 45 giây kết hợp tải trước 30 giây / 12 câu thoại tiếp theo. Nhờ vậy video bắt đầu phát gần như ngay lập tức và khi bạn tua đến bất kỳ mốc thời gian nào, hệ thống tự động dịch ngay đoạn đó.",
   },
   {
-    question: "Cơ chế AI Terminology Lock hoạt động ra sao? Tôi có thể tự thêm từ điển riêng không?",
+    question: "TAI đồng bộ giọng lồng tiếng với video như thế nào để không bị chồng tiếng hay giật âm lượng?",
     answer:
-      "AI Terminology Lock sử dụng thuật ngữ vector kết hợp regex ràng buộc chặt chẽ với mô hình LLM. Bạn có thể chọn sẵn các bộ từ điển có sẵn (Lập trình IT, Trí tuệ nhân tạo, Y học - Dược phẩm, Kinh tế - Chứng khoán) hoặc tự nhập danh sách từ khóa riêng (ví dụ: 'Kubernetes Cluster' -> không dịch, 'Backpropagation' -> Lan truyền ngược) một cách không giới hạn trên gói Pro.",
+      "Bộ máy phát của TAI sử dụng thuật toán 3-cue lookahead nhìn trước 3 câu thoại kế tiếp để tự điều chỉnh nhịp tốc độ giọng đọc và tốc độ video mượt mà (giữ nguyên cao độ preservesPitch), kết hợp Audio Ducking 4 chế độ giúp hạ tiếng gốc êm dịu không bị giật cục.",
   },
   {
-    question: "Tôi có cần cài đặt thêm Extension vào Chrome hoặc Edge không?",
+    question: "TAI hỗ trợ bao nhiêu ngôn ngữ và chất lượng giọng đọc ra sao?",
     answer:
-      "Không cần thiết. TAI là ứng dụng Desktop độc lập (Native Desktop App). TAI thu nhận tín hiệu âm thanh hệ thống (System Audio Hook) và vẽ lớp phụ đề nổi (Floating Overlay) trong suốt đè lên bất kỳ trình duyệt hoặc ứng dụng phát video nào mà không can thiệp vào mã nguồn web hay vi phạm chính sách của trình duyệt.",
+      "TAI Desktop hỗ trợ 42 ngôn ngữ với hệ thống giọng đọc Neural TTS tự nhiên, cho phép bạn chọn ngôn ngữ đích và giọng đọc yêu thích trực tiếp ngay trên thanh điều khiển của trình phát.",
   },
   {
-    question: "TAI có hỗ trợ dịch thuật khi không có kết nối Internet (Offline) không?",
+    question: "Tôi có cần cài thêm Extension vào Chrome hay Edge không?",
     answer:
-      "Có! TAI cung cấp tùy chọn tải mô hình Whisper Edge nhỏ gọn (~480MB) để xử lý hoàn toàn Offline trên thiết bị của bạn. Khi có mạng Internet, TAI tự động kết nối với mạng lưới Cloud Edge để tăng tốc độ phản hồi xuống dưới 150ms và kích hoạt tính năng lồng tiếng Neural Audio Dubbing chất lượng cao.",
+      "Không cần. TAI Desktop là ứng dụng Windows độc lập tích hợp sẵn trình phát YouTube, đi kèm lớp phụ đề song ngữ nổi có thể kéo thả vị trí, tự co cỡ chữ và bảng Transcript cho phép bấm vào từng câu để tua nhanh.",
   },
   {
-    question: "Chính sách dùng thử và hoàn tiền hoạt động như thế nào?",
+    question: "Gói Free và quy trình nâng cấp Pro / Team hoạt động như thế nào?",
     answer:
-      "Bạn có thể bắt đầu với gói Free Starter trọn đời mà không cần nhập thẻ tín dụng. Khi đăng ký gói Pro Creator, bạn được dùng thử miễn phí 7 ngày với đầy đủ quyền năng. Ngoài ra, TAI cam kết hoàn tiền 100% không cần lý do trong vòng 14 ngày nếu sản phẩm không đáp ứng đúng kỳ vọng của bạn.",
+      "Khi mở TAI Desktop và đăng ký tài khoản mới, hệ thống tự động tạo không gian cá nhân và kích hoạt gói Free với hạn mức phút lồng tiếng mỗi tháng (không cần thẻ tín dụng). Bạn có thể xem tiến độ sử dụng theo thời gian thực và gửi yêu cầu nâng cấp lên gói Pro hoặc Team (Tenant nhiều thành viên) trực tiếp trong ứng dụng.",
   },
   {
-    question: "Làm thế nào để xuất phụ đề sang Notion và tạo thẻ ghi nhớ Anki?",
+    question: "TAI Desktop hỗ trợ những nền tảng video nào?",
     answer:
-      "Tại thanh công cụ của bảng transcript, bạn chỉ cần bấm nút 'Xuất Notion' để sao chép toàn bộ văn bản song ngữ đã định dạng Markdown kèm mốc thời gian. Hoặc bấm 'Tạo thẻ Anki' để xuất file .apkg tự động phân loại từ mới, câu ví dụ ngữ cảnh và phiên âm phát âm.",
+      "TAI Desktop được thiết kế và tối ưu chuyên sâu cho YouTube ngay trong trình phát tích hợp của ứng dụng. Bạn chỉ cần mở ứng dụng, duyệt YouTube hoặc dán đường dẫn video để bật phụ đề song ngữ và lồng tiếng AI tức thì.",
   },
 ];

@@ -3,25 +3,46 @@
 import React, { useState } from "react";
 import {
   Layers,
-  Languages,
-  ShieldAlert,
-  Cpu,
+  Globe,
+  FastForward,
+  Sliders,
   Volume2,
-  FileSpreadsheet,
-  CheckCircle2,
+  Users,
   Sparkles,
   Move,
-  Sliders,
-  Eye,
-  Key,
-  BookOpen,
-  ArrowRight,
-  Zap,
 } from "lucide-react";
 
+const duckingModes = [
+  {
+    id: "light",
+    label: "Nhẹ",
+    originalVol: "45%",
+    desc: "Giữ rõ âm thanh nền & nhạc video, giọng AI đọc nổi nhẹ phía trên.",
+  },
+  {
+    id: "balanced",
+    label: "Cân bằng",
+    originalVol: "22%",
+    desc: "Mức tối ưu mặc định cho phỏng vấn, bài giảng và vlog YouTube.",
+  },
+  {
+    id: "focus",
+    label: "Ưu tiên AI",
+    originalVol: "10%",
+    desc: "Tập trung rõ nét vào giọng thuyết minh tiếng Việt, giảm tối đa tạp âm gốc.",
+  },
+  {
+    id: "mute",
+    label: "Tắt tiếng gốc",
+    originalVol: "0%",
+    desc: "Chỉ nghe giọng đọc lồng tiếng AI hoàn toàn sạch và dễ theo dõi.",
+  },
+] as const;
+
 export default function FeatureBento() {
-  const [activeDictionary, setActiveDictionary] = useState<"it" | "med" | "finance">("it");
-  const [floatingOpacity, setFloatingOpacity] = useState(95);
+  const [floatingOpacity, setFloatingOpacity] = useState(92);
+  const [duckingIdx, setDuckingIdx] = useState(1);
+  const currentDucking = duckingModes[duckingIdx];
 
   return (
     <section id="features" className="py-24 relative overflow-hidden bg-slate-50">
@@ -34,23 +55,23 @@ export default function FeatureBento() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Kiến Trúc Đột Phá Cho Desktop</span>
+            <span>Tính Năng Thực Tế Trên TAI Desktop</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Mọi tính năng được tối ưu cho{" "}
+            Mọi công nghệ được xây dựng cho{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600">
-              trải nghiệm xem video đỉnh cao.
+              trải nghiệm xem YouTube mượt mà.
             </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Không còn phụ thuộc vào phụ đề tự động ngô nghê của YouTube. TAI kết hợp
-            Whisper v3 và LLM cục bộ để mang lại chất lượng dịch thuật chuẩn học thuật.
+            Trình phát YouTube tích hợp ngay trên Windows 10/11 — kết hợp dịch phân đoạn,
+            đồng bộ 3-cue lookahead và 42 ngôn ngữ Neural TTS mà không cần cài Extension.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: Realtime Floating Subtitle (Span 2 cols on lg) */}
+          {/* Card 1: Floating Bilingual Subtitles (Span 2 cols on lg) */}
           <div className="lg:col-span-2 group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
@@ -58,17 +79,17 @@ export default function FeatureBento() {
                   <Layers className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
-                  Phụ đề nổi vô cực
+                  Phụ đề nổi &amp; Transcript
                 </span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
-                Realtime Floating Subtitle (Cửa sổ phụ đề nổi)
+                Phụ đề song ngữ nổi trực tiếp trên video YouTube
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed max-w-xl">
-                Cửa sổ trong suốt đè lên bất kỳ trình duyệt (Chrome, Brave, Edge, Safari)
-                hoặc app phát video nào. Tự do kéo thả, ghim luôn trên cùng (Always on
-                top) và hỗ trợ phím tắt xuyên thấu chuột (Click-through mode).
+                Hiển thị đồng thời câu thoại gốc và bản dịch ngay trên khung phát YouTube.
+                Kéo thả vị trí tự do, tự co kích thước chữ vừa khung nhìn và đi kèm bảng
+                Transcript bên cạnh để bấm vào bất kỳ câu nào và tua tức thì.
               </p>
             </div>
 
@@ -80,22 +101,25 @@ export default function FeatureBento() {
                   backgroundColor: `rgba(248, 250, 252, ${floatingOpacity / 100})`,
                 }}
               >
-                <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 mb-2">
                   <div className="flex items-center gap-2">
                     <Move className="w-3.5 h-3.5 text-blue-600" />
                     <span className="font-semibold text-slate-800">
-                      Kéo thả vị trí tuỳ ý trên video
+                      Kéo thả vị trí &amp; tự co cỡ chữ trên khung video
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Sliders className="w-3.5 h-3.5 text-slate-500" />
-                    <span className="text-[11px] font-medium">Độ rõ nét: {floatingOpacity}%</span>
+                    <span className="text-[11px] font-medium">
+                      Độ mờ nền: {floatingOpacity}%
+                    </span>
                     <input
                       type="range"
                       min="40"
                       max="100"
                       value={floatingOpacity}
                       onChange={(e) => setFloatingOpacity(Number(e.target.value))}
+                      aria-label="Điều chỉnh độ mờ nền phụ đề nổi"
                       className="w-16 h-1 accent-blue-600 cursor-pointer"
                     />
                   </div>
@@ -103,197 +127,133 @@ export default function FeatureBento() {
 
                 <div className="space-y-1">
                   <p className="text-xs text-slate-500 font-sans">
-                    "Today we demonstrate how low-rank adaptation reduces fine-tuning
-                    costs."
+                    &quot;Notice how the streaming pipeline prefetches upcoming cues so
+                    playback stays seamless.&quot;
                   </p>
                   <p className="text-sm sm:text-base font-bold text-slate-900">
-                    "Hôm nay chúng ta sẽ chứng minh phương pháp thích ứng bậc thấp (LoRA)
-                    giảm thiểu chi phí tinh chỉnh mô hình như thế nào."
+                    &quot;Hãy xem cách luồng xử lý tải trước các câu thoại kế tiếp để video
+                    phát mượt mà không bị ngắt quãng.&quot;
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Dual Subtitles */}
+          {/* Card 2: 42 Languages & Neural TTS */}
           <div className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-indigo-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-100">
-                  <Languages className="w-6 h-6" />
+                  <Globe className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">
-                  Song ngữ thông minh
+                  42 Ngôn ngữ
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Dual Subtitles (Song ngữ tức thì)
+                Giọng đọc Neural TTS tự nhiên
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Hiển thị song song câu thoại gốc và bản dịch tiếng Việt. Bấm vào bất kỳ từ
-                vựng nào để xem ngay phiên âm IPA, nghĩa chuyên ngành và ví dụ minh hoạ.
+                Hỗ trợ 42 ngôn ngữ với các giọng đọc Neural TTS truyền cảm. Tự động bảo
+                toàn cao độ giọng nói (<code className="font-mono text-xs">preservesPitch</code>)
+                khi tăng giảm nhịp độ để giọng đọc không bị méo tiếng.
               </p>
             </div>
 
-            <div className="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
               <div className="flex items-center justify-between text-[11px] text-slate-500">
-                <span>Tra từ vựng 1 chạm</span>
-                <span className="text-blue-600 font-mono font-bold">Bấm: "Gradient"</span>
+                <span>Ngôn ngữ phổ biến</span>
+                <span className="text-indigo-600 font-mono font-bold">preservesPitch: ON</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-white border border-blue-200 text-xs shadow-xs">
-                <div className="flex items-center justify-between text-blue-800 font-bold">
-                  <span>gradient /ˈɡreɪ.di.ənt/</span>
-                  <span className="text-[10px] bg-blue-50 px-1.5 py-0.5 rounded text-blue-700 border border-blue-200">
-                    Toán & AI
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-600 mt-1">
-                  Độ dốc / Vector đạo hàm riêng chỉ hướng tăng mạnh nhất của hàm số.
-                </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["Tiếng Việt", "English", "日本語", "한국어", "中文", "Français", "Deutsch", "+35"].map(
+                  (lang) => (
+                    <span
+                      key={lang}
+                      className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[11px] font-medium text-slate-700"
+                    >
+                      {lang}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>
 
-          {/* Card 3: AI Terminology Lock */}
+          {/* Card 3: Chunked ~45s Streaming + Prefetch */}
           <div className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-100">
-                  <ShieldAlert className="w-6 h-6" />
+                  <FastForward className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
-                  Không dịch sai thuật ngữ
+                  Phát ngay &amp; Tua tức thì
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mb-2">
-                AI Terminology Lock (Khoá Thuật Ngữ)
+                Dịch phân đoạn ~45s + Tải trước
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Giải quyết triệt để vấn đề AI dịch ngô nghê. Giữ nguyên 100% thuật ngữ IT,
-                Y khoa, Tài chính hoặc tên hàm API mà bạn cài đặt.
+                Không cần chờ tải hay dịch toàn bộ video dài nhiều tiếng. TAI chia đoạn ~45
+                giây và tải trước 30 giây / 12 câu thoại tiếp theo — tua đến bất kỳ đâu là
+                dịch ngay đoạn đó.
               </p>
             </div>
 
-            {/* Dictionary selector pill simulation */}
-            <div className="mt-6 space-y-2.5">
-              <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-lg border border-slate-200">
-                <button
-                  onClick={() => setActiveDictionary("it")}
-                  className={`flex-1 py-1 text-[11px] font-semibold rounded cursor-pointer transition-all ${
-                    activeDictionary === "it"
-                      ? "bg-white text-blue-700 shadow-xs border border-slate-200"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  IT & DevOps
-                </button>
-                <button
-                  onClick={() => setActiveDictionary("med")}
-                  className={`flex-1 py-1 text-[11px] font-semibold rounded cursor-pointer transition-all ${
-                    activeDictionary === "med"
-                      ? "bg-white text-blue-700 shadow-xs border border-slate-200"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  Y khoa & Dược
-                </button>
-                <button
-                  onClick={() => setActiveDictionary("finance")}
-                  className={`flex-1 py-1 text-[11px] font-semibold rounded cursor-pointer transition-all ${
-                    activeDictionary === "finance"
-                      ? "bg-white text-blue-700 shadow-xs border border-slate-200"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  Kinh tế & Đầu tư
-                </button>
+            <div className="mt-6 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono space-y-2">
+              <div className="flex justify-between text-slate-700">
+                <span>Đoạn đang phát</span>
+                <span className="text-blue-700 font-bold">00:00 – 00:45</span>
               </div>
-
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-mono space-y-1">
-                {activeDictionary === "it" && (
-                  <>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "Kubernetes Cluster" ➔ Khóa nguyên dạng
-                    </div>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "Race Condition" ➔ Trạng thái tranh chấp
-                    </div>
-                  </>
-                )}
-                {activeDictionary === "med" && (
-                  <>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "Myocardial Infarction" ➔ Nhồi máu cơ tim
-                    </div>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "mRNA Vaccine" ➔ Khóa nguyên dạng
-                    </div>
-                  </>
-                )}
-                {activeDictionary === "finance" && (
-                  <>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "Yield Curve Inversion" ➔ Đảo ngược đường cong lợi suất
-                    </div>
-                    <div className="text-emerald-700 font-medium">
-                      ✓ "EBITDA Margin" ➔ Khóa nguyên dạng
-                    </div>
-                  </>
-                )}
+              <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden flex">
+                <div className="w-[45%] bg-blue-600 h-full" />
+                <div className="w-[30%] bg-cyan-400/80 h-full" />
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-500">
+                <span>● Đã đồng bộ</span>
+                <span className="text-cyan-700 font-semibold">Prefetch 30s / 12 cues</span>
               </div>
             </div>
           </div>
 
-          {/* Card 4: Lightweight Desktop Client */}
+          {/* Card 4: 3-Cue Lookahead Sync */}
           <div className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-emerald-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100">
-                  <Cpu className="w-6 h-6" />
+                  <Sliders className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                  Rust Core Engine
+                  3-Cue Lookahead
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Lightweight Client (Siêu tiết kiệm RAM)
+                Đồng bộ âm thanh – video mượt mà
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Được viết bằng Rust và C++ với nhân xử lý WebGPU tối tân. Tiêu thụ dưới
-                180MB RAM, không làm quạt máy tính hú to hay tụt pin khi làm việc liên tục.
+                Nhìn trước 3 câu thoại kế tiếp để chủ động điều chỉnh tốc độ giọng đọc AI
+                và tốc độ phát video nhịp nhàng, tránh chồng tiếng hoặc lệch khung hình khi
+                người nói tăng tốc.
               </p>
             </div>
 
-            {/* RAM comparison bar */}
-            <div className="mt-6 space-y-2">
-              <div>
-                <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                  <span className="text-emerald-700 font-bold font-mono">
-                    TAI Desktop Client
-                  </span>
-                  <span className="font-mono text-emerald-700 font-bold">142 MB</span>
-                </div>
-                <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                  <div className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full w-[16%]" />
-                </div>
+            <div className="mt-6 space-y-2 text-xs font-mono">
+              <div className="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200 flex items-center justify-between">
+                <span className="text-emerald-800 font-semibold">Cue N+1 / N+2 / N+3</span>
+                <span className="text-emerald-700 font-bold">Không chồng tiếng</span>
               </div>
-
-              <div>
-                <div className="flex justify-between text-[11px] text-slate-500 mb-1">
-                  <span>Extension trình duyệt thông thường</span>
-                  <span className="font-mono font-medium">820 MB</span>
-                </div>
-                <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                  <div className="bg-slate-300 h-full w-[65%]" />
-                </div>
+              <div className="flex justify-between text-[11px] text-slate-500 px-1">
+                <span>Tự điều chỉnh nhịp đọc</span>
+                <span className="font-semibold text-slate-700">Giữ nguyên cao độ</span>
               </div>
             </div>
           </div>
 
-          {/* Card 5: Neural Dubbing */}
+          {/* Card 5: 4-Mode Audio Ducking */}
           <div className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-purple-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -301,59 +261,79 @@ export default function FeatureBento() {
                   <Volume2 className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
-                  Thuyết minh AI
+                  Ducking 4 chế độ
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Real-time Audio Dubbing
+                Audio Ducking không giật âm lượng
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Vừa nghe vừa làm việc mà không cần dán mắt vào màn hình. Giọng đọc AI
-                truyền cảm bằng tiếng Việt tự động hạ âm lượng video gốc khi có giọng nói.
+                Tự động hạ nhẹ âm thanh gốc của YouTube khi giọng đọc AI cất lên và nâng lại
+                êm ái theo 4 chế độ linh hoạt — nghe lâu vẫn dễ chịu.
               </p>
             </div>
 
-            <div className="mt-6 p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-600 animate-ping"></span>
-                <span className="text-xs font-semibold text-slate-800">
-                  Giọng Nam Trầm Ấm (Studio)
-                </span>
+            <div className="mt-6 space-y-2.5">
+              <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200">
+                {duckingModes.map((mode, idx) => (
+                  <button
+                    key={mode.id}
+                    type="button"
+                    onClick={() => setDuckingIdx(idx)}
+                    className={`py-1 text-[10px] font-semibold rounded cursor-pointer transition-all ${
+                      duckingIdx === idx
+                        ? "bg-white text-purple-700 shadow-xs border border-slate-200"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    {mode.label}
+                  </button>
+                ))}
               </div>
-              <span className="text-[11px] text-purple-700 font-mono font-bold">
-                Ducking -12dB
-              </span>
+              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-[11px] text-slate-600 space-y-1">
+                <div className="flex justify-between font-mono font-bold text-purple-700">
+                  <span>Âm lượng gốc khi đọc:</span>
+                  <span>{currentDucking.originalVol}</span>
+                </div>
+                <p>{currentDucking.desc}</p>
+              </div>
             </div>
           </div>
 
-          {/* Card 6: 1-Click Sync to Anki & Notion */}
+          {/* Card 6: SaaS Account & Tenant */}
           <div className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-100">
-                  <FileSpreadsheet className="w-6 h-6" />
+                  <Users className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
-                  Tài liệu & Học tập
+                  Cá nhân &amp; Đội nhóm
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Đồng bộ Notion & Anki 1 Cú Click
+                Tài khoản SaaS &amp; Hạn mức đồng bộ
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Sau khi xem xong bài giảng, xuất toàn bộ transcript song ngữ kèm mốc thời
-                gian sang Notion hoặc tạo bộ thẻ Anki để ôn từ mới mỗi ngày.
+                Đăng ký tài khoản ngay trong ứng dụng để nhận gói Free hàng tháng. Theo dõi
+                số phút đã dùng theo thời gian thực và hỗ trợ không gian dùng chung cho đội
+                nhóm (Tenant).
               </p>
             </div>
 
-            <div className="mt-6 flex items-center gap-2">
-              <div className="flex-1 py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-xs">
-                <span>📓 Notion Export</span>
+            <div className="mt-6 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-800">Hạn mức tháng hiện tại</span>
+                <span className="font-mono font-bold text-blue-700">Đồng bộ realtime</span>
               </div>
-              <div className="flex-1 py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-xs">
-                <span>🎴 Anki Flashcards</span>
+              <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                <div className="w-[38%] h-full bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full" />
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-500">
+                <span>Gói Free tự kích hoạt</span>
+                <span>Nâng cấp ngay trong app</span>
               </div>
             </div>
           </div>

@@ -57,7 +57,7 @@ export default function Hero({ release }: HeroProps) {
             </span>
             <span className="text-slate-300">•</span>
             <span className="text-xs text-blue-600 font-semibold">
-              Whisper v3 Turbo + Neural Dubbing
+              42 Ngôn Ngữ Neural TTS + Đồng Bộ 3-Cue Lookahead
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-slate-400 ml-0.5" />
           </a>
@@ -66,17 +66,18 @@ export default function Hero({ release }: HeroProps) {
         {/* Main Headline */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
-            Dịch thuật YouTube song ngữ{" "}
+            Xem YouTube lồng tiếng AI{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600">
-              theo thời gian thực.
+              &amp; phụ đề song ngữ tức thì.
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Ứng dụng Desktop dịch phụ đề và lồng tiếng AI tức thì với{" "}
-            <strong className="text-slate-900 font-semibold">độ trễ dưới 200ms</strong>.
-            Bảo toàn 100% thuật ngữ chuyên ngành IT, Y khoa và Nghiên cứu khoa học.
+            Trình phát YouTube tích hợp trên Windows 10/11 với{" "}
+            <strong className="text-slate-900 font-semibold">42 ngôn ngữ Neural TTS</strong>.
+            Dịch phân đoạn ~45s phát ngay lập tức, đồng bộ âm thanh – video 3-cue lookahead
+            mượt mà và phụ đề song ngữ kéo thả trực tiếp trên video.
           </p>
 
           {/* Primary CTA */}

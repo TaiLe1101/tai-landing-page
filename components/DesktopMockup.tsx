@@ -39,100 +39,93 @@ const channelPresets: ChannelData[] = [
   {
     langCode: "EN-VI",
     langLabel: "English ➔ Tiếng Việt",
-    videoTitle: "MIT 6.S191: Deep Learning & Attention Mechanism",
-    sourceCategory: "MIT OpenCourseWare • Lecture 04",
-    speaker: "Prof. Alexander Amini",
-    latency: "142ms",
+    videoTitle: "Deep Learning & Attention Mechanism — YouTube Lecture",
+    sourceCategory: "YouTube • Trình phát tích hợp",
+    speaker: "42 Ngôn ngữ Neural TTS",
+    latency: "3-Cue Sync",
     subtitles: [
       {
         id: 1,
         time: "04:18",
         source: "In this section, we transition from Recurrent Neural Networks to the Transformer architecture.",
         vi: "Trong phần này, chúng ta chuyển từ Mạng Nơ-ron Hồi quy sang kiến trúc Transformer.",
-        termLocks: ["Transformer", "Recurrent Neural Networks"],
+        termLocks: ["Chunk ~45s"],
       },
       {
         id: 2,
         time: "04:25",
         source: "The primary breakthrough is removing sequential dependencies via self-attention layers.",
         vi: "Đột phá cốt lõi là loại bỏ sự phụ thuộc tuần tự thông qua các lớp self-attention.",
-        termLocks: ["Self-Attention", "Sequential Dependencies"],
+        termLocks: ["Prefetch 30s"],
       },
       {
         id: 3,
         time: "04:32",
-        source: "Notice how the multi-head attention mechanism computes matrix representations in parallel across GPUs.",
-        vi: "Hãy chú ý cách cơ chế multi-head attention tính toán biểu diễn ma trận song song trên nhiều GPU.",
-        termLocks: ["Multi-Head Attention", "GPUs"],
+        source: "Notice how multi-head attention computes matrix representations in parallel across GPUs.",
+        vi: "Hãy chú ý cách multi-head attention tính toán biểu diễn ma trận song song trên nhiều GPU.",
+        termLocks: ["3-Cue Sync"],
       },
       {
         id: 4,
         time: "04:39",
-        source: "This drastically mitigates the vanishing gradient problem when handling long context windows.",
-        vi: "Điều này giảm thiểu triệt để vấn đề biến mất gradient (vanishing gradient) khi xử lý cửa sổ ngữ cảnh dài.",
-        termLocks: ["Vanishing Gradient", "Context Windows"],
-      },
-      {
-        id: 5,
-        time: "04:46",
-        source: "Let's benchmark the inference latency and token throughput on our local cluster.",
-        vi: "Hãy cùng đo độ trễ suy luận (inference latency) và lưu lượng token trên cụm máy chủ cục bộ.",
-        termLocks: ["Inference Latency", "Token Throughput"],
+        source: "This helps handle much longer context windows cleanly and efficiently.",
+        vi: "Điều này giúp xử lý cửa sổ ngữ cảnh dài hơn một cách gọn gàng và hiệu quả.",
+        termLocks: ["Ducking: Cân bằng"],
       },
     ],
   },
   {
     langCode: "JA-VI",
     langLabel: "日本語 ➔ Tiếng Việt",
-    videoTitle: "NHK Science: 量子コンピューティングと超伝導回路",
-    sourceCategory: "Tokyo Tech Research Keynote",
-    speaker: "Dr. Kenjiro Nakamura",
-    latency: "158ms",
+    videoTitle: "YouTube Science: 量子コンピューティング入門",
+    sourceCategory: "YouTube • Trình phát tích hợp",
+    speaker: "42 Ngôn ngữ Neural TTS",
+    latency: "3-Cue Sync",
     subtitles: [
       {
         id: 1,
         time: "02:10",
-        source: "量子重ね合わせ状態を利用することで、従来のスーパーコンピュータを凌駕する計算速度を実現します。",
-        vi: "Bằng cách tận dụng trạng thái chồng chập lượng tử (quantum superposition), chúng ta đạt tốc độ tính toán vượt trội siêu máy tính truyền thống.",
-        termLocks: ["Quantum Superposition", "Supercomputer"],
+        source: "量子重ね合わせ状態を利用することで、従来の計算速度を大きく超えます。",
+        vi: "Bằng cách tận dụng trạng thái chồng chập lượng tử, tốc độ tính toán vượt xa máy tính truyền thống.",
+        termLocks: ["Chunk ~45s"],
       },
       {
         id: 2,
         time: "02:18",
-        source: "極低温希釈冷凍機内において、超伝導量子ビットのコヒーレンス時間を測定しています。",
-        vi: "Bên trong tủ lạnh pha loãng cực kỳ lạnh, chúng tôi đo thời gian kết hợp (coherence time) của các qubit siêu dẫn.",
-        termLocks: ["Dilution Refrigerator", "Qubit", "Coherence Time"],
+        source: "超伝導量子ビットのコヒーレンス時間をリアルタイムで測定しています。",
+        vi: "Chúng tôi đo thời gian kết hợp của các qubit siêu dẫn theo thời gian thực.",
+        termLocks: ["Prefetch 30s"],
       },
       {
         id: 3,
         time: "02:26",
-        source: "エラー訂正符号の実装により、量子優位性を産業レベルで実証可能になります。",
-        vi: "Với việc triển khai mã sửa lỗi lượng tử (error-correcting code), ưu thế lượng tử có thể được chứng minh ở quy mô công nghiệp.",
-        termLocks: ["Error-Correcting Code", "Quantum Supremacy"],
+        source: "エラー訂正符号の実装により、実用化への道が開かれています。",
+        vi: "Việc triển khai mã sửa lỗi lượng tử đang mở ra con đường ứng dụng thực tế.",
+        termLocks: ["3-Cue Sync"],
       },
     ],
   },
   {
     langCode: "KO-VI",
     langLabel: "한국어 ➔ Tiếng Việt",
-    videoTitle: "KAIST: 차세대 HBM 반도체 패키징 기술",
-    sourceCategory: "Seoul Semiconductor Symposium",
-    speaker: "Prof. Min-ho Park",
-    latency: "149ms",
+    videoTitle: "YouTube Tech: 차세대 AI 반도체 패키징 기술",
+    sourceCategory: "YouTube • Trình phát tích hợp",
+    speaker: "42 Ngôn ngữ Neural TTS",
+    latency: "3-Cue Sync",
     subtitles: [
       {
         id: 1,
         time: "01:45",
-        source: "AI 가속기의 성능 병목 현상을 해결하기 위해 3D 적층 HBM 메모리가 필수적입니다.",
-        vi: "Để giải quyết hiện tượng nghẽn cổ chai hiệu năng của bộ tăng tốc AI, bộ nhớ HBM xếp chồng 3D là yếu tố then chốt.",
-        termLocks: ["AI Accelerator", "HBM", "3D Stacking"],
+        source: "AI 가속기의 성능 병목 현상을 해결하기 위해 HBM 메모리가 필수적입니다.",
+        vi: "Để giải quyết nút thắt hiệu năng của bộ tăng tốc AI, bộ nhớ HBM là yếu tố thiết yếu.",
+        termLocks: ["Chunk ~45s"],
       },
       {
         id: 2,
         time: "01:52",
-        source: "TSV 실리콘 관통 전극 기술을 통해 데이터 전송 대역폭을 획기적으로 개선했습니다.",
-        vi: "Thông qua công nghệ điện cực xuyên silicon (TSV), băng thông truyền dữ liệu đã được cải thiện đột phá.",
-        termLocks: ["TSV", "Bandwidth"],
+        source: "데이터 전송 대역폭을 획기적으로 개선한 구조를 살펴보겠습니다.",
+        vi: "Hãy cùng xem cấu trúc giúp cải thiện đột phá băng thông truyền tải dữ liệu.",
+        termLocks: ["3-Cue Sync"],
       },
     ],
   },
@@ -268,12 +261,12 @@ export default function DesktopMockup() {
           </button>
         </div>
 
-        {/* Lock dictionary status & Dubbing toggle */}
+        {/* Ducking status & Dubbing toggle */}
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-xs">
             <Shield className="w-3.5 h-3.5 text-blue-600" />
-            <span className="font-medium">AI Terminology Lock:</span>
-            <span className="text-blue-700 font-bold">Tech Dictionary</span>
+            <span className="font-medium">Ducking:</span>
+            <span className="text-blue-700 font-bold">Cân bằng (4 chế độ)</span>
           </div>
 
           <button
@@ -353,7 +346,7 @@ export default function DesktopMockup() {
                   </div>
                   {isDubbingOn && (
                     <span className="text-[10px] text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
-                      <Volume2 className="w-3 h-3 text-emerald-600" /> Dubbing: Giọng Nam Truyền Cảm
+                      <Volume2 className="w-3 h-3 text-emerald-600" /> Neural TTS • preservesPitch
                     </span>
                   )}
                 </div>
@@ -365,22 +358,8 @@ export default function DesktopMockup() {
                         {currentSub.source}
                       </p>
                     )}
-                    <p className="text-sm font-bold text-slate-900 leading-relaxed flex flex-wrap items-center gap-1">
-                      {currentSub.vi.split(" ").map((word, wIdx) => {
-                        const isLocked = currentSub.termLocks.some((term) =>
-                          word.toLowerCase().includes(term.toLowerCase().split(" ")[0])
-                        );
-                        return isLocked ? (
-                          <span
-                            key={wIdx}
-                            className="bg-blue-100 text-blue-700 px-1 py-0.2 rounded border border-blue-200 font-bold"
-                          >
-                            {word}
-                          </span>
-                        ) : (
-                          <span key={wIdx}>{word}</span>
-                        );
-                      })}
+                    <p className="text-sm font-bold text-slate-900 leading-relaxed">
+                      {currentSub.vi}
                     </p>
                   </div>
                 )}
@@ -427,7 +406,7 @@ export default function DesktopMockup() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-[11px] text-blue-300 font-mono font-medium">
-                    Độ trễ: {currentChannel.latency}
+                    Đồng bộ: {currentChannel.latency}
                   </span>
                   <Settings className="w-3.5 h-3.5 hover:text-white cursor-pointer" />
                   <Maximize2 className="w-3.5 h-3.5 hover:text-white cursor-pointer" />
@@ -438,20 +417,11 @@ export default function DesktopMockup() {
 
           <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400">
             <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[10px]">
-                  Alt+T
-                </kbd>
-                <span>Bật/Tắt phụ đề</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[10px]">
-                  Alt+D
-                </kbd>
-                <span>Bật/Tắt Audio Dubbing</span>
-              </span>
+              <span>Kéo thả phụ đề nổi trực tiếp trên video</span>
+              <span className="text-slate-600">•</span>
+              <span>Bấm câu ở bảng phải để tua</span>
             </div>
-            <span className="text-emerald-400 font-medium">● YouTube Hook Active</span>
+            <span className="text-emerald-400 font-medium">● Prefetch 30s / 12 cues</span>
           </div>
         </div>
 
@@ -462,7 +432,7 @@ export default function DesktopMockup() {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                  Bảng Phụ Đề Song Ngữ Real-Time
+                  Bảng Transcript Song Ngữ (Bấm để tua)
                 </p>
               </div>
               <span className="text-[11px] text-blue-700 font-mono font-bold bg-blue-50 px-2 py-0.5 rounded">
@@ -474,7 +444,7 @@ export default function DesktopMockup() {
               <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Tìm từ vựng, thuật ngữ hoặc mốc thời gian..."
+                placeholder="Lọc nhanh câu thoại hoặc mốc thời gian..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white"
@@ -482,62 +452,70 @@ export default function DesktopMockup() {
             </div>
 
             <div className="space-y-2.5 max-h-77.5 overflow-y-auto pr-1">
-              {currentChannel.subtitles.map((sub, idx) => {
-                const isActive = idx === activeSubtitleIndex;
-                return (
-                  <div
-                    key={sub.id}
-                    onClick={() => setActiveSubtitleIndex(idx)}
-                    className={`p-2.5 rounded-xl border transition-all duration-200 cursor-pointer ${
-                      isActive
-                        ? "bg-blue-50/80 border-blue-300 shadow-xs"
-                        : "bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px] mb-1">
-                      <span
-                        className={`font-mono font-bold ${
-                          isActive ? "text-blue-700" : "text-slate-500"
-                        }`}
-                      >
-                        {sub.time}
-                      </span>
-                      <div className="flex items-center gap-1.5">
-                        {sub.termLocks.map((lock, lIdx) => (
-                          <span
-                            key={lIdx}
-                            className="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-700 border border-blue-200 font-semibold"
-                          >
-                            🔒 {lock}
-                          </span>
-                        ))}
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleCopy(`${sub.source}\n${sub.vi}`);
-                          }}
-                          className="text-slate-400 hover:text-slate-600 transition-colors p-0.5 cursor-pointer"
-                          title="Sao chép câu song ngữ"
-                        >
-                          <Copy className="w-3 h-3" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <p className="text-[11px] text-slate-500 font-sans leading-snug">
-                      {sub.source}
-                    </p>
-
-                    <p
-                      className={`text-xs mt-1 font-semibold leading-snug ${
-                        isActive ? "text-blue-900" : "text-slate-800"
+              {currentChannel.subtitles
+                .filter(
+                  (sub) =>
+                    !searchQuery.trim() ||
+                    sub.source.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    sub.vi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    sub.time.includes(searchQuery)
+                )
+                .map((sub, idx) => {
+                  const isActive = idx === activeSubtitleIndex;
+                  return (
+                    <div
+                      key={sub.id}
+                      onClick={() => setActiveSubtitleIndex(idx)}
+                      className={`p-2.5 rounded-xl border transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-blue-50/80 border-blue-300 shadow-xs"
+                          : "bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-300"
                       }`}
                     >
-                      {sub.vi}
-                    </p>
-                  </div>
-                );
-              })}
+                      <div className="flex items-center justify-between text-[11px] mb-1">
+                        <span
+                          className={`font-mono font-bold ${
+                            isActive ? "text-blue-700" : "text-slate-500"
+                          }`}
+                        >
+                          {sub.time}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          {sub.termLocks.map((tag, lIdx) => (
+                            <span
+                              key={lIdx}
+                              className="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-700 border border-blue-200 font-semibold"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(`${sub.source}\n${sub.vi}`);
+                            }}
+                            className="text-slate-400 hover:text-slate-600 transition-colors p-0.5 cursor-pointer"
+                            title="Sao chép câu song ngữ"
+                          >
+                            <Copy className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <p className="text-[11px] text-slate-500 font-sans leading-snug">
+                        {sub.source}
+                      </p>
+
+                      <p
+                        className={`text-xs mt-1 font-semibold leading-snug ${
+                          isActive ? "text-blue-900" : "text-slate-800"
+                        }`}
+                      >
+                        {sub.vi}
+                      </p>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -545,16 +523,16 @@ export default function DesktopMockup() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
               <span className="text-[11px] font-medium text-slate-700">
-                Whisper v3 Turbo Engine
+                42 Ngôn ngữ • Neural TTS
               </span>
             </div>
             <div className="flex items-center gap-2">
               <button
-                onClick={() => handleCopy("Đã sao chép toàn bộ transcript song ngữ Markdown!")}
+                onClick={() => handleCopy(currentChannel.subtitles.map((s) => `[${s.time}] ${s.source}\n${s.vi}`).join("\n\n"))}
                 className="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700 border border-slate-200 transition-colors duration-150 cursor-pointer flex items-center gap-1 font-semibold"
               >
                 <Bookmark className="w-3 h-3 text-blue-600" />
-                <span>Xuất Notion</span>
+                <span>Chép Transcript</span>
               </button>
             </div>
           </div>

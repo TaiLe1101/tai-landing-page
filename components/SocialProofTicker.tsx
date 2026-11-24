@@ -1,64 +1,64 @@
 "use client";
 
 import React from "react";
-import { Zap, Globe, Shield, Users, Cpu, Award } from "lucide-react";
+import { Globe, Layers, FastForward, Sliders, Volume2, PlaySquare } from "lucide-react";
 
-const stats = [
-  {
-    icon: Zap,
-    value: "< 200ms",
-    label: "Độ trễ cực thấp",
-    desc: "Xử lý âm thanh tức thì trên On-Device Edge AI, nhanh hơn tốc độ nói",
-    color: "from-blue-600 to-cyan-600",
-  },
+const highlights = [
   {
     icon: Globe,
-    value: "50+ Ngôn ngữ",
-    label: "Đa ngôn ngữ toàn cầu",
-    desc: "Dịch hai chiều mượt mà giữa tiếng Anh, Nhật, Hàn, Trung, Đức, Việt...",
+    value: "42 Ngôn ngữ",
+    label: "Neural TTS tự nhiên",
+    desc: "Lồng tiếng AI đa ngôn ngữ tự nhiên, giữ nguyên cao độ giọng nói (preservesPitch)",
     color: "from-blue-600 to-indigo-600",
   },
   {
-    icon: Shield,
-    value: "99.2%",
-    label: "Chuẩn xác thuật ngữ",
-    desc: "AI Terminology Lock khoá nguyên vẹn từ vựng IT, Y khoa & Nghiên cứu",
+    icon: FastForward,
+    value: "~45s / Đoạn",
+    label: "Dịch phân đoạn phát ngay",
+    desc: "Không cần chờ xử lý hết cả video dài — bấm phát là nghe ngay, tua tới đâu dịch tới đó",
+    color: "from-blue-600 to-cyan-600",
+  },
+  {
+    icon: Layers,
+    value: "30s / 12 Câu",
+    label: "Tải trước thông minh",
+    desc: "Tự động chuẩn bị sẵn 30 giây hoặc 12 câu thoại tiếp theo để chuyển đoạn mượt mà",
     color: "from-indigo-600 to-purple-600",
   },
   {
-    icon: Users,
-    value: "120K+",
-    label: "Chuyên gia tin dùng",
-    desc: "Kỹ sư phần mềm, bác sĩ nội trú, sinh viên học bổng và nhà nghiên cứu",
+    icon: Sliders,
+    value: "3-Cue Sync",
+    label: "Đồng bộ lookahead",
+    desc: "Nhìn trước 3 câu để cân chỉnh tốc độ đọc và tốc độ video êm ái, không chồng tiếng",
     color: "from-blue-600 to-teal-600",
   },
   {
-    icon: Cpu,
-    value: "< 180MB",
-    label: "Tiết kiệm RAM & CPU",
-    desc: "Kiến trúc Rust siêu nhẹ, chạy nền êm ái khi stream video 4K 60fps",
+    icon: Volume2,
+    value: "4 Chế độ",
+    label: "Audio Ducking êm dịu",
+    desc: "Tự hạ âm lượng gốc mượt mà theo 4 mức tùy chọn, không gây giật âm lượng nền",
     color: "from-emerald-600 to-teal-600",
   },
 ];
 
-const platforms = [
-  "YouTube Main & Shorts",
-  "Coursera Tech Lectures",
-  "MIT OpenCourseWare",
-  "Udemy Masterclasses",
-  "Stanford Online",
-  "Twitch Dev Streams",
-  "Twitter/X Spaces",
-  "Google I/O & Apple WWDC",
+const youtubeTopics = [
+  "Bài giảng Công nghệ & AI",
+  "Podcast & Phỏng vấn quốc tế",
+  "Hướng dẫn lập trình & DevOps",
+  "Khoa học & Nghiên cứu",
+  "Phim tài liệu YouTube",
+  "Tin tức & Phân tích kinh tế",
+  "Review sản phẩm & Keynote",
+  "Học ngoại ngữ song ngữ",
 ];
 
 export default function SocialProofTicker() {
   return (
     <section className="py-12 bg-white border-y border-slate-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Metric Cards Grid */}
+        {/* Core Capabilities Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
-          {stats.map((item, idx) => {
+          {highlights.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
@@ -90,21 +90,21 @@ export default function SocialProofTicker() {
           })}
         </div>
 
-        {/* Ticker marquee text */}
+        {/* YouTube Content Categories Ticker */}
         <div className="mt-10 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 uppercase tracking-wider shrink-0">
-            <Award className="w-4 h-4 text-blue-600" />
-            <span>Tương thích mọi nền tảng video:</span>
+            <PlaySquare className="w-4 h-4 text-red-600" />
+            <span>Tối ưu cho mọi nội dung trên YouTube:</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2 text-xs text-slate-500 font-medium">
-            {platforms.map((platform, i) => (
+            {youtubeTopics.map((topic, i) => (
               <span
                 key={i}
-                className="hover:text-blue-600 transition-colors duration-150 flex items-center gap-1.5 cursor-pointer"
+                className="hover:text-blue-600 transition-colors duration-150 flex items-center gap-1.5"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-                {platform}
+                {topic}
               </span>
             ))}
           </div>

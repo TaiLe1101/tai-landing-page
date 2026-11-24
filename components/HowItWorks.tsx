@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { DownloadCloud, PlaySquare, Headphones, ShieldCheck } from "lucide-react";
+import { DownloadCloud, PlaySquare, Headphones, CheckCircle2 } from "lucide-react";
 import type { ReleaseInfo } from "@/lib/release";
 
 interface HowItWorksProps {
@@ -13,39 +13,46 @@ export default function HowItWorks({ release }: HowItWorksProps) {
   const steps = [
     {
       step: "01",
-      title: "Cài đặt trong 30 giây",
-      desc: `Tải file cài đặt${sizeHint} cho Windows 10/11 (macOS & Linux sắp ra mắt). Không cần cài thêm Extension trình duyệt rườm rà.`,
+      title: "Tải app & đăng ký nhận gói Free",
+      desc: `Cài đặt nhanh trên Windows 10/11${sizeHint}. Đăng ký tài khoản ngay trong ứng dụng để tự động kích hoạt gói Free hàng tháng mà không cần thẻ tín dụng.`,
       icon: DownloadCloud,
-      badge: "1-Click Setup",
+      badge: "Free Tự Kích Hoạt",
+      footer: "Tự động cập nhật phiên bản mới",
     },
     {
       step: "02",
-      title: "Mở bất kỳ video nào",
-      desc: "Mở YouTube, Coursera, Twitch hoặc bất kỳ bài giảng nào. Động cơ audio hook tự động nhận diện luồng phát tức thời.",
+      title: "Mở video YouTube ngay trong TAI",
+      desc: "Duyệt YouTube trực tiếp trong trình phát tích hợp hoặc dán link video. Chọn ngôn ngữ đích và giọng đọc từ 42 ngôn ngữ Neural TTS.",
       icon: PlaySquare,
-      badge: "Auto Detection",
+      badge: "Trình Phát Tích Hợp",
+      footer: "Không cần cài Extension trình duyệt",
     },
     {
       step: "03",
-      title: "Trải nghiệm song ngữ & Dubbing",
-      desc: "Phụ đề song ngữ nổi đè lên màn hình với độ trễ <200ms. Thuyết minh giọng đọc tiếng Việt tự nhiên bảo toàn âm thanh gốc.",
+      title: "Nghe lồng tiếng & xem song ngữ ngay",
+      desc: "Hệ thống dịch phân đoạn ~45s + tải trước 30s / 12 câu, tự đồng bộ 3-cue lookahead, Audio Ducking 4 chế độ và phụ đề nổi kéo thả.",
       icon: Headphones,
-      badge: "Real-time AI",
+      badge: "Phát Tức Thì",
+      footer: "Tua tới đâu dịch ngay tới đó",
     },
   ];
+
   return (
-    <section id="how-it-works" className="py-20 bg-slate-50 relative border-t border-slate-200">
+    <section
+      id="how-it-works"
+      className="py-20 bg-slate-50 relative border-t border-slate-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="text-blue-600 font-mono text-xs uppercase tracking-widest font-bold">
-            Đơn Giản & Hiệu Quả
+            Đơn Giản &amp; Hiệu Quả
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Chỉ với 3 bước để tiếp cận tri thức toàn cầu
+            Chỉ 3 bước để xem YouTube lồng tiếng AI mượt mà
           </h2>
           <p className="text-sm sm:text-base text-slate-600">
-            Không cần tài khoản phức tạp, không cần API Key bên ngoài. Mọi thứ hoạt động
-            ngay sau khi mở ứng dụng.
+            Không cần cấu hình API Key bên ngoài, không cần Extension rườm rà. Mở ứng dụng
+            và bắt đầu xem ngay.
           </p>
         </div>
 
@@ -76,8 +83,8 @@ export default function HowItWorks({ release }: HowItWorksProps) {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-blue-700">
-                  <ShieldCheck className="w-4 h-4 mr-1.5 text-blue-600" />
-                  <span>Bảo mật dữ liệu 100% On-Device</span>
+                  <CheckCircle2 className="w-4 h-4 mr-1.5 text-blue-600" />
+                  <span>{item.footer}</span>
                 </div>
               </div>
             );

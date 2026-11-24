@@ -32,9 +32,9 @@ export default function Footer({ release }: FooterProps) {
             </div>
 
             <p className="text-slate-500 max-w-sm leading-relaxed">
-              Ứng dụng Desktop dịch thuật YouTube song ngữ theo thời gian thực với độ trễ
-              dưới 200ms, bảo toàn 100% thuật ngữ chuyên sâu và hỗ trợ lồng tiếng AI thông
-              minh.
+              Ứng dụng TAI Desktop cho Windows 10/11 tích hợp trình phát YouTube với 42 ngôn
+              ngữ Neural TTS, dịch phân đoạn ~45s, đồng bộ 3-cue lookahead và phụ đề song
+              ngữ kéo thả.
             </p>
 
             {/* Social Links with SVG icons */}
@@ -118,15 +118,31 @@ export default function Footer({ release }: FooterProps) {
           {/* Column 2: Tài nguyên */}
           <div className="space-y-3">
             <h2 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
-              Tài nguyên
+              Khám phá
             </h2>
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#faq"
+                  href="#how-it-works"
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Tài liệu hướng dẫn
+                  Cách hoạt động (3 bước)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#demo"
+                  className="hover:text-blue-600 transition-colors cursor-pointer"
+                >
+                  Audio Ducking &amp; Đồng bộ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  className="hover:text-blue-600 transition-colors cursor-pointer"
+                >
+                  Gói Free, Pro &amp; Team
                 </a>
               </li>
               <li>
@@ -134,64 +150,48 @@ export default function Footer({ release }: FooterProps) {
                   href="#faq"
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Từ điển IT & Y khoa
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="hover:text-blue-600 transition-colors cursor-pointer"
-                >
-                  Mẫu thẻ Anki Deck
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="hover:text-blue-600 transition-colors cursor-pointer"
-                >
-                  Khắc phục sự cố âm thanh
+                  Câu hỏi thường gặp
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Pháp lý & An toàn */}
+          {/* Column 3: Nền tảng & Hỗ trợ */}
           <div className="space-y-3">
             <h2 className="font-bold text-slate-900 tracking-wider uppercase text-[11px]">
-              Pháp lý & Bảo mật
+              Nền tảng
             </h2>
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href={INTERNAL_DOWNLOAD_PATH}
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Chính sách quyền riêng tư
+                  Windows 10 / 11 (64-bit)
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#download"
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Điều khoản dịch vụ
+                  macOS (Sắp ra mắt)
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#download"
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Bảo vệ dữ liệu On-Device
+                  Linux (Sắp ra mắt)
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#download"
                   className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
-                  Cam kết hoàn tiền 14 ngày
+                  Tự động cập nhật trong app
                 </a>
               </li>
             </ul>
@@ -203,7 +203,7 @@ export default function Footer({ release }: FooterProps) {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             <span className="text-slate-600 font-mono text-[11px]">
-              Hệ thống Whisper Turbo & Dubbing Cloud: Hoạt động bình thường (100% Uptime)
+              TAI Desktop cho Windows 10/11 • 42 ngôn ngữ Neural TTS &amp; Phụ đề song ngữ
             </span>
           </div>
 

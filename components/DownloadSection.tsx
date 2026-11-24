@@ -47,8 +47,8 @@ export default function DownloadSection({ release }: DownloadSectionProps) {
             Sẵn sàng mở khóa thế giới tri thức video?
           </h2>
           <p className="text-base text-slate-600">
-            Cài đặt nhanh trong 30 giây. Không cần thẻ tín dụng, trải nghiệm miễn phí trọn
-            đời với bản Starter.
+            Cài đặt nhanh trên Windows 10/11. Đăng ký tài khoản ngay trong ứng dụng để tự
+            động nhận gói Free hàng tháng — không cần thẻ tín dụng.
           </p>
         </div>
 
@@ -198,15 +198,15 @@ export default function DownloadSection({ release }: DownloadSectionProps) {
           </div>
         </div>
 
-        {/* Security / Verification footer */}
+        {/* Verification footer */}
         <div className="mt-12 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 font-medium">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Mã nguồn ký số chứng thư số bảo mật EV Code Signing</span>
+            <span>Tự động kiểm tra và cập nhật phiên bản mới trực tiếp trong ứng dụng</span>
           </div>
           <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-blue-600" />
-            <span>Không chứa quảng cáo, phần mềm gián điệp hay telemetry xâm phạm</span>
+            <span>Tải trực tiếp từ máy chủ phát hành chính thức, không cần Extension</span>
           </div>
         </div>
       </div>

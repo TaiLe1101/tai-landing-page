@@ -56,7 +56,7 @@ export default function StickyDownloadBar({ release }: StickyDownloadBarProps) {
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                &lt; 200ms Latency
+                42 Ngôn ngữ • Neural TTS
               </span>
             </div>
             <p className="text-[11px] text-slate-500 hidden sm:block">

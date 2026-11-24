@@ -9,6 +9,6 @@ export function getSiteUrl(): string {
 export const SITE_NAME = "TAI Desktop";
 export const SITE_FULL_NAME = "Translation AI (TAI)";
 export const SITE_TITLE =
-  "TAI Desktop — Dịch Phụ Đề Song Ngữ & Thuyết Minh AI YouTube Thời Gian Thực";
+  "TAI Desktop — Trình Phát YouTube Lồng Tiếng AI & Phụ Đề Song Ngữ Thời Gian Thực";
 export const SITE_DESCRIPTION =
-  "Ứng dụng TAI Desktop cho Windows dịch phụ đề song ngữ YouTube và lồng tiếng AI theo thời gian thực với độ trễ <200ms, bảo toàn 100% thuật ngữ chuyên ngành IT, Y khoa & Nghiên cứu.";
+  "Ứng dụng TAI Desktop cho Windows 10/11 tích hợp trình phát YouTube với 42 ngôn ngữ Neural TTS, dịch phân đoạn ~45s phát ngay, đồng bộ âm thanh – video 3-cue lookahead, Audio Ducking 4 chế độ và phụ đề song ngữ kéo thả.";

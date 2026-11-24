@@ -12,9 +12,13 @@ import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import StickyDownloadBar from "@/components/StickyDownloadBar";
 import { getCachedLatestRelease } from "@/lib/release-server";
+import { getCachedPublicPlans } from "@/lib/plans-server";
 
 export default async function Home() {
-  const release = await getCachedLatestRelease();
+  const [release, plans] = await Promise.all([
+    getCachedLatestRelease(),
+    getCachedPublicPlans(),
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-500/15 selection:text-blue-900">
@@ -50,7 +54,7 @@ export default async function Home() {
         <Testimonials />
 
         {/* Interactive Pricing (Monthly / Yearly Switch) */}
-        <Pricing release={release} />
+        <Pricing release={release} plans={plans} />
 
         {/* Direct Download Options */}
         <DownloadSection release={release} />
